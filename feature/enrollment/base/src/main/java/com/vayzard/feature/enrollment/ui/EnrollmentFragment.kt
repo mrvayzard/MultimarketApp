@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.vayzard.feature.enrollment.R
+import com.vayzard.feature.enrollment.databinding.FragmentEnrollmentBinding
 import com.vayzard.feature.enrollment.di.FeatureEnrollmentScope
-import com.vayzard.feature_enrollment.R
-import com.vayzard.feature_enrollment.databinding.FragmentEnrollmentBinding
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

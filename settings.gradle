@@ -7,5 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MultimarketApp"
 include ':app'
-include ':feature-enrollment'
-include ':feature-enrollment-mxa'
+include ':feature:enrollment:base'
+include ':feature:enrollment:mxa'

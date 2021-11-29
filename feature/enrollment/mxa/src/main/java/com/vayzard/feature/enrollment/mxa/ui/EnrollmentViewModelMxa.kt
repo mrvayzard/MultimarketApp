@@ -7,7 +7,6 @@ import com.vayzard.feature.enrollment.mxa.ui.mapper.EnrollmentPresenterMxa
 import com.vayzard.feature.enrollment.mxa.ui.model.EnrollmentUiModelMxa
 import com.vayzard.feature.enrollment.ui.EnrollmentViewModel
 import com.vayzard.feature.enrollment.ui.mapper.EnrollmentPresenter
-import com.vayzard.feature.enrollment.ui.model.MessageState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

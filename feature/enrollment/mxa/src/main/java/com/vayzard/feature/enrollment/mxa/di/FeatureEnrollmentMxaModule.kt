@@ -19,7 +19,7 @@ val featureEnrollmentMxaModule = module {
       EnrollmentInteractorMxa(
         enrollmentRepositoryMxa = get(),
         mexicoSpecificFieldValidator = get(),
-        // provided by feature-enrollment module
+        // provided by base module
         interactor = get()
       )
     }
@@ -31,9 +31,9 @@ val featureEnrollmentMxaModule = module {
     EnrollmentViewModelMxa(
       enrollmentPresenterMxa = get(),
       enrollmentInteractorMxa = scope.get(),
-      // provided by feature-enrollment module
+      // provided by base module
       enrollmentPresenter = get(),
-      // provided by feature-enrollment module
+      // provided by base module
       enrollmentInteractor = scope.get(),
     )
   }

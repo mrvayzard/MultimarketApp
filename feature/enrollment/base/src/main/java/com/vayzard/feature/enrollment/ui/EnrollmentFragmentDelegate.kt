@@ -13,7 +13,6 @@ import com.vayzard.feature.enrollment.ui.extension.setErrorIfDifferent
 import com.vayzard.feature.enrollment.ui.extension.setTextIfDifferent
 import com.vayzard.feature.enrollment.ui.model.EnrollmentUiModel
 import com.vayzard.feature.enrollment.ui.model.MessageState
-import com.vayzard.feature_enrollment.databinding.FragmentEnrollmentBinding
 import kotlinx.coroutines.flow.collect
 
 interface EnrollmentFragmentDelegate : LifecycleObserver {
