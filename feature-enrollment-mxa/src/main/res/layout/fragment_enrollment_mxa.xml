@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="16dp">
+
+	<EditText
+			android:id="@+id/firstNameEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="First name"
+			app:layout_constraintTop_toTopOf="parent" />
+
+	<EditText
+			android:id="@+id/lastNameEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:hint="Last name"
+			app:layout_constraintTop_toBottomOf="@+id/firstNameEditText" />
+
+	<EditText
+			android:id="@+id/mexicoSpecificFieldEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:hint="Mexico specific field"
+			app:layout_constraintTop_toBottomOf="@+id/lastNameEditText" />
+
+	<Button
+			android:id="@+id/enrollButton"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:text="Enroll"
+			app:layout_constraintTop_toBottomOf="@+id/mexicoSpecificFieldEditText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
