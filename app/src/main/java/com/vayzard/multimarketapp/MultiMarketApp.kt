@@ -1,12 +1,11 @@
 package com.vayzard.multimarketapp
 
 import android.app.Application
-import com.vayzard.feature.enrollment.di.featureEnrollmentModule
 import com.vayzard.market.di.featureMarketModule
 import com.vayzard.market.domain.MarketRepository
 import com.vayzard.multimarketapp.di.MarketKoinModulesResolver
-import com.vayzard.utils.CoroutineDispatcherProvider
-import com.vayzard.utils.DefaultCoroutineDispatcherProvider
+import com.vayzard.utils.coroutines.CoroutineDispatcherProvider
+import com.vayzard.utils.coroutines.DefaultCoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.runBlocking
@@ -44,7 +43,6 @@ class MultiMarketApp : Application() {
       androidContext(this@MultiMarketApp)
       modules(
         appModule,
-        featureEnrollmentModule,
         featureMarketModule,
       )
       loadCurrentMarketModules()

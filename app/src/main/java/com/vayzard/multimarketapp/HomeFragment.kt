@@ -44,29 +44,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     binding.marketSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
       override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         val market = when (position) {
-          0 -> Market.Japan
-          1 -> Market.Mexico
-          else -> Market.Japan
+          0 -> Market.US
+          1 -> Market.Japan
+          2 -> Market.Mexico
+          else -> throw IllegalStateException("Unknown market selected")
         }
         saveSelectedMarket(market)
         changeEnvironment(market)
       }
 
       override fun onNothingSelected(p0: AdapterView<*>?) {
-
+        // do nothing
       }
     }
   }
 
   private fun changeEnvironment(market: Market) {
-    val previousMarket = when (market) {
-      Market.Japan -> Market.Mexico
-      Market.Mexico -> Market.Japan
+    viewLifecycleOwner.lifecycleScope.launch {
+      // remove old dependencies
+      val currentMarket = marketRepository.getCurrentMarket()
+      val currentMarketModules = MarketKoinModulesResolver.resolve(currentMarket)
+      unloadKoinModules(currentMarketModules)
+
+      // and apply new
+      val selectedMarketModules = MarketKoinModulesResolver.resolve(market)
+      loadKoinModules(selectedMarketModules)
     }
-    val previousMarketModules = MarketKoinModulesResolver.resolve(previousMarket)
-    unloadKoinModules(previousMarketModules)
-    val currentMarketModules = MarketKoinModulesResolver.resolve(market)
-    loadKoinModules(currentMarketModules)
   }
 
   private fun saveSelectedMarket(market: Market) {
@@ -78,8 +81,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
   private fun fetchMarket() {
     viewLifecycleOwner.lifecycleScope.launch {
       val id = when (marketRepository.getCurrentMarket()) {
-        Market.Japan -> 0
-        Market.Mexico -> 1
+        Market.US -> 0
+        Market.Japan -> 1
+        Market.Mexico -> 2
       }
       binding.marketSpinner.setSelection(id)
     }

@@ -1,4 +1,4 @@
-package com.vayzard.jpn.domain.validator
+package com.vayzard.feature.enrollment.jpn.domain.validator
 
 import com.vayzard.feature.enrollment.domain.exception.FirstNameException
 import com.vayzard.feature.enrollment.domain.validator.FirstNameValidator

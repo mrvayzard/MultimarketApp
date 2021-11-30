@@ -1,4 +1,4 @@
-package com.vayzard.jpn.domain.validator
+package com.vayzard.feature.enrollment.jpn.domain.validator
 
 object JapanSymbolsValidator {
   // Regex for matching Hiragana or Katakana
