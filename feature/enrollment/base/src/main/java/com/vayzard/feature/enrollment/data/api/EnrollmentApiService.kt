@@ -5,7 +5,7 @@ import com.vayzard.feature.enrollment.data.model.EnrollResponse
 import kotlin.random.Random
 
 class EnrollmentApiService {
-  suspend fun enroll(
+  fun enroll(
     request: EnrollRequest
   ): EnrollResponse = EnrollResponse(
     userId = Random.nextLong(),

@@ -5,11 +5,11 @@
 		android:layout_height="match_parent"
 		android:padding="16dp">
 
-	<CheckBox
-			android:id="@+id/enableMxaMarketCheckBox"
-			android:layout_width="wrap_content"
+	<Spinner
+			android:id="@+id/marketSpinner"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Enable MXA market"
+			android:entries="@array/markets"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
@@ -19,9 +19,9 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
-			android:text="Start enrollment"
+			android:text="@string/start_enrollment"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/enableMxaMarketCheckBox" />
+			app:layout_constraintTop_toBottomOf="@+id/marketSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
