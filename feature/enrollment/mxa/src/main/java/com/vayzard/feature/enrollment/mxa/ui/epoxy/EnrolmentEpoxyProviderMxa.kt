@@ -24,7 +24,7 @@ internal class EnrollmentEpoxyProviderMxaImpl : EnrollmentEpoxyProviderMxa {
       id("mexicoSpecificFieldEditText")
       value(text)
       errorMessage(error)
-      hintMessage("First name")
+      hintMessage("Mexico specific field")
       onTextChange(onTextChangeAction)
     }
     margin {
