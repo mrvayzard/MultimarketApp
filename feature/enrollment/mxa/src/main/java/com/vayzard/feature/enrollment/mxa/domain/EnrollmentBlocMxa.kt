@@ -2,7 +2,9 @@ package com.vayzard.feature.enrollment.mxa.domain
 
 import com.vayzard.core.bloc.Bloc
 import com.vayzard.feature.enrollment.domain.EnrollmentProcessor
+import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameAction
 import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameReducer
+import com.vayzard.feature.enrollment.domain.action.UpdateLastNameAction
 import com.vayzard.feature.enrollment.domain.action.UpdateLastNameReducer
 import com.vayzard.feature.enrollment.domain.model.EnrollmentState
 import com.vayzard.feature.enrollment.mxa.domain.action.*
@@ -36,11 +38,11 @@ internal class EnrollmentBlocMxa(
   }
 
   override fun updateFirstName(value: String) {
-    dispatch(UpdateFirstNameActionMxa(value, updateFirstNameReducer))
+    dispatch(EnrollmentActionAdapter(UpdateFirstNameAction(value, updateFirstNameReducer)))
   }
 
   override fun updateLastName(value: String) {
-    dispatch(UpdateLastNameActionMxa(value, updateLastNameReducer))
+    dispatch(EnrollmentActionAdapter(UpdateLastNameAction(value, updateLastNameReducer)))
   }
 
   fun updateMexicoSpecificField(value: String) {
