@@ -1,36 +1,22 @@
 package com.vayzard.feature.enrollment.mxa.ui
 
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.ViewModel
 import com.vayzard.feature.enrollment.domain.model.UserInfo
 import com.vayzard.feature.enrollment.mxa.domain.EnrollmentBlocMxa
 import com.vayzard.feature.enrollment.mxa.domain.model.UserInfoMxa
+import com.vayzard.feature.enrollment.mxa.ui.epoxy.EnrollmentEpoxyControllerMxa
 import com.vayzard.feature.enrollment.mxa.ui.mapper.EnrollmentPresenterMxa
-import com.vayzard.feature.enrollment.mxa.ui.model.EnrollmentUiModelMxa
-import com.vayzard.feature.enrollment.ui.EnrollmentViewModel
-import com.vayzard.feature.enrollment.ui.mapper.EnrollmentPresenter
-import kotlinx.coroutines.flow.Flow
+import com.vayzard.feature.enrollment.ui.EnrollmentViewModelDelegate
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 internal class EnrollmentViewModelMxa(
   private val enrollmentPresenterMxa: EnrollmentPresenterMxa,
   private val enrollmentBlocMxa: EnrollmentBlocMxa,
-  enrollmentPresenter: EnrollmentPresenter,
-) : EnrollmentViewModel(
-  enrollmentPresenter = enrollmentPresenter,
-  enrollmentProcessor = enrollmentBlocMxa
-) {
-  val mexicoStateFlow: Flow<EnrollmentUiModelMxa> = enrollmentBlocMxa.asFlow()
-    .map(enrollmentPresenterMxa::toUiModel)
-
-  /**
-   * Unique method for MXA market
-   */
-  fun onMexicoSpecificFieldChanged(value: String) {
-    viewModelScope.launch {
-      enrollmentBlocMxa.updateMexicoSpecificField(value)
-    }
-  }
+  private val enrollmentDelegate: EnrollmentViewModelDelegate,
+) : ViewModel(),
+  EnrollmentEpoxyControllerMxa.Callback,
+  EnrollmentViewModelDelegate by enrollmentDelegate {
+  val stateFlow = enrollmentBlocMxa.asFlow().map(enrollmentPresenterMxa::toUiModel)
 
   /**
    * Mexico market has unique UserInfo model
@@ -45,5 +31,21 @@ internal class EnrollmentViewModelMxa(
         .toString()
       showMessage(message)
     }
+  }
+
+  override fun onMexicoSpecificFieldChanged(value: String) {
+    enrollmentBlocMxa.updateMexicoSpecificField(value)
+  }
+
+  override fun onFirstNameChanged(value: String) {
+    enrollmentBlocMxa.updateFirstName(value)
+  }
+
+  override fun onLastNameChanged(value: String) {
+    enrollmentBlocMxa.updateLastName(value)
+  }
+
+  override fun onEnrollButtonClicked() {
+    enrollmentBlocMxa.enroll()
   }
 }

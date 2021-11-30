@@ -48,13 +48,16 @@ val featureEnrollmentMxaModule = module {
     EnrollmentViewModelMxa(
       enrollmentPresenterMxa = get(),
       enrollmentBlocMxa = get(),
-      // provided by base module
-      enrollmentPresenter = get(),
+      enrollmentDelegate = get()
     )
   }
 
-  factory { EnrollmentPresenterMxa() }
-
+  factory {
+    EnrollmentPresenterMxa(
+      // provided by base module
+      enrollmentPresenter = get()
+    )
+  }
 
   factory { MexicoSpecificFieldValidator() }
 

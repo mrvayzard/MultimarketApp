@@ -7,9 +7,3 @@ fun EditText.setTextIfDifferent(value: String) {
     setText(value)
   }
 }
-
-fun EditText.setErrorIfDifferent(value: String?) {
-  if (error != value) {
-    error = value
-  }
-}

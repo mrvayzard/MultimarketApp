@@ -12,6 +12,8 @@ import com.vayzard.feature.enrollment.domain.validator.FirstNameValidatorDefault
 import com.vayzard.feature.enrollment.domain.validator.LastNameValidator
 import com.vayzard.feature.enrollment.domain.validator.LastNameValidatorDefault
 import com.vayzard.feature.enrollment.ui.EnrollmentViewModel
+import com.vayzard.feature.enrollment.ui.EnrollmentViewModelDelegate
+import com.vayzard.feature.enrollment.ui.EnrollmentViewModelDelegateDefault
 import com.vayzard.feature.enrollment.ui.mapper.EnrollmentPresenter
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.bind
@@ -22,9 +24,11 @@ val featureEnrollmentModule = module {
   viewModel {
     EnrollmentViewModel(
       enrollmentPresenter = get(),
-      enrollmentProcessor = get<EnrollmentBloc>()
+      enrollmentProcessor = get<EnrollmentBloc>(),
+      enrollmentDelegate = get()
     )
   }
+  factory { EnrollmentViewModelDelegateDefault() } bind EnrollmentViewModelDelegate::class
   factory { EnrollmentPresenter() }
   // endregion
 
