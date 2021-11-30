@@ -36,7 +36,10 @@ val featureEnrollmentModule = module {
         updateFirstNameReducer = get(),
         updateLastNameReducer = get(),
         enrollReducer = get(),
+        // provided by app module
         scope = get(),
+        // provided by app module
+        dispatcherProvider = get()
       )
     }
   }

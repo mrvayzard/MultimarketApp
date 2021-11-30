@@ -3,8 +3,8 @@ package com.vayzard.feature.enrollment.domain
 import com.vayzard.core.bloc.Bloc
 import com.vayzard.feature.enrollment.domain.action.*
 import com.vayzard.feature.enrollment.domain.model.EnrollmentState
+import com.vayzard.utils.CoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 
 class EnrollmentBloc(
@@ -12,9 +12,10 @@ class EnrollmentBloc(
   private val updateLastNameReducer: UpdateLastNameReducer,
   private val enrollReducer: EnrollReducer,
   scope: CoroutineScope,
+  dispatcherProvider: CoroutineDispatcherProvider
 ) : Bloc<EnrollmentAction, EnrollmentState>(
   scope = scope,
-  coroutineDispatcher = Dispatchers.IO
+  coroutineDispatcher = dispatcherProvider.default()
 ), EnrollmentProcessor {
   override fun initState(): EnrollmentState = EnrollmentState()
 

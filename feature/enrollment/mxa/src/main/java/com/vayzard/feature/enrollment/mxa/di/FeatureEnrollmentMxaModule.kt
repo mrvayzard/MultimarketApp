@@ -23,8 +23,12 @@ val featureEnrollmentMxaModule = module {
         updateMexicoSpecificFieldReducer = get(),
         // provided by base module
         updateFirstNameReducer = get(),
+        // provided by base module
         updateLastNameReducer = get(),
-        scope = get()
+        // provided by app module
+        scope = get(),
+        // provided by app module
+        dispatcherProvider = get(),
       )
     }
   }

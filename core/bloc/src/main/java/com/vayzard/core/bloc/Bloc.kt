@@ -3,13 +3,15 @@ package com.vayzard.core.bloc
 import com.vayzard.core.bloc.utils.GlobalBlocInterceptor
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.*
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.actor
+import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.flow.*
 
 open class Bloc<Action : BlocAction<State>, State>(
-    scope: CoroutineScope,
-    coroutineDispatcher: CoroutineDispatcher = Dispatchers.Main,
+  scope: CoroutineScope,
+  coroutineDispatcher: CoroutineDispatcher,
 ) {
   companion object {
     private const val TRANSACTION_BUFFER_CAPACITY = 100
@@ -18,8 +20,8 @@ open class Bloc<Action : BlocAction<State>, State>(
   private val stateFlow = MutableStateFlow<State?>(null)
 
   private val _transactionFlow = MutableSharedFlow<Transaction<Action, State>>(
-      extraBufferCapacity = TRANSACTION_BUFFER_CAPACITY,
-      onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    extraBufferCapacity = TRANSACTION_BUFFER_CAPACITY,
+    onBufferOverflow = BufferOverflow.DROP_OLDEST,
   )
   val transactionFlow: SharedFlow<Transaction<Action, State>> = _transactionFlow
 
@@ -36,10 +38,10 @@ open class Bloc<Action : BlocAction<State>, State>(
           emit(state)
         }
       }
-          .flowOn(coroutineDispatcher)
-          .collect { state ->
-            stateFlow.value = state
-          }
+        .flowOn(coroutineDispatcher)
+        .collect { state ->
+          stateFlow.value = state
+        }
     }
   }
 

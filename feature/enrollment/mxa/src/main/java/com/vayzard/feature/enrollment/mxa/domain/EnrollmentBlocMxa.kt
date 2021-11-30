@@ -2,16 +2,14 @@ package com.vayzard.feature.enrollment.mxa.domain
 
 import com.vayzard.core.bloc.Bloc
 import com.vayzard.feature.enrollment.domain.EnrollmentProcessor
-import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameAction
 import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameReducer
-import com.vayzard.feature.enrollment.domain.action.UpdateLastNameAction
 import com.vayzard.feature.enrollment.domain.action.UpdateLastNameReducer
 import com.vayzard.feature.enrollment.domain.model.EnrollmentState
 import com.vayzard.feature.enrollment.mxa.domain.action.*
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentSpecificState
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentStateMxa
+import com.vayzard.utils.CoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -20,10 +18,11 @@ class EnrollmentBlocMxa(
   private val updateFirstNameReducer: UpdateFirstNameReducer,
   private val updateLastNameReducer: UpdateLastNameReducer,
   private val updateMexicoSpecificFieldReducer: UpdateMexicoSpecificFieldReducerMxa,
-  scope: CoroutineScope
+  scope: CoroutineScope,
+  dispatcherProvider: CoroutineDispatcherProvider
 ) : Bloc<EnrollmentActionMxa, EnrollmentStateMxa>(
   scope = scope,
-  coroutineDispatcher = Dispatchers.IO
+  coroutineDispatcher = dispatcherProvider.default()
 ), EnrollmentProcessor {
   override fun initState(): EnrollmentStateMxa = EnrollmentStateMxa(
     EnrollmentState(),
