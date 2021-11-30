@@ -34,7 +34,7 @@ open class EnrollmentFragmentDelegateImpl(
   private val firstNameEditText: EditText,
   private val lastNameEditText: EditText,
   private val enrollButton: Button,
-  private val viewModel: EnrollmentViewModelDelegate
+  private val viewModel: EnrollmentViewModel
 ) : EnrollmentFragmentDelegate, DefaultLifecycleObserver {
   override fun onCreate(owner: LifecycleOwner) {
     super.onCreate(owner)

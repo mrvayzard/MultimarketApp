@@ -17,17 +17,4 @@ internal data class EnrollmentStateMxa(
  */
 internal data class EnrollmentSpecificState(
   val mexicoSpecificField: InputState = InputState(),
-  val resultMxa: EnrollmentResultMxa = EnrollmentResultMxa.Idle,
 )
-
-internal sealed class EnrollmentResultMxa {
-  object Idle : EnrollmentResultMxa()
-
-  data class Failure(
-    val error: Exception
-  ) : EnrollmentResultMxa()
-
-  data class Success(
-    val userInfo: UserInfoMxa
-  ) : EnrollmentResultMxa()
-}

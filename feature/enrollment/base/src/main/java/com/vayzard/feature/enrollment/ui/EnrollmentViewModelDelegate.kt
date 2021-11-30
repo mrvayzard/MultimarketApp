@@ -2,9 +2,10 @@ package com.vayzard.feature.enrollment.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vayzard.feature.enrollment.domain.EnrollmentBloc
 import com.vayzard.feature.enrollment.domain.EnrollmentProcessor
 import com.vayzard.feature.enrollment.domain.model.EnrollmentResult
+import com.vayzard.feature.enrollment.domain.model.UserInfo
+import com.vayzard.feature.enrollment.domain.model.UserInfoDefault
 import com.vayzard.feature.enrollment.ui.mapper.EnrollmentPresenter
 import com.vayzard.feature.enrollment.ui.model.EnrollmentUiModel
 import com.vayzard.feature.enrollment.ui.model.MessageState
@@ -79,15 +80,27 @@ open class EnrollmentViewModel(
 
   private fun processEnrollmentResult(result: EnrollmentResult) {
     when (result) {
-      is EnrollmentResult.Failure -> {
-        showMessage(result.error.message ?: "Unknown error")
-      }
-      is EnrollmentResult.Success -> {
-        showMessage(result.userInfo.toString())
-      }
+      is EnrollmentResult.Failure -> showError(result.error)
+      is EnrollmentResult.Success -> showUserInfo(result.userInfo)
       EnrollmentResult.Idle -> {
         // do nothing
       }
+    }
+  }
+
+  open fun showError(exception: Exception) {
+    val errorMessage = exception.message ?: "Unknown error"
+    showMessage("Default implementation: $errorMessage")
+  }
+
+  open fun showUserInfo(userInfo: UserInfo) {
+    if (userInfo is UserInfoDefault) {
+      val message = StringBuilder()
+        .appendLine("Default implementation:")
+        .appendLine(userInfo.firstName)
+        .appendLine(userInfo.lastName)
+        .toString()
+      showMessage(message)
     }
   }
 }

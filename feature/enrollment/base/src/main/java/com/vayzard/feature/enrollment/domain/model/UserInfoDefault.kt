@@ -1,7 +1,9 @@
 package com.vayzard.feature.enrollment.domain.model
 
-data class UserInfo(
+interface UserInfo
+
+data class UserInfoDefault(
   val id: Long,
   val firstName: String,
   val lastName: String
-)
+) : UserInfo

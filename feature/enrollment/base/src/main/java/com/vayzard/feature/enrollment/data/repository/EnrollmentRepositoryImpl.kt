@@ -3,7 +3,7 @@ package com.vayzard.feature.enrollment.data.repository
 import com.vayzard.feature.enrollment.data.api.EnrollmentApiService
 import com.vayzard.feature.enrollment.data.model.EnrollRequest
 import com.vayzard.feature.enrollment.domain.EnrollmentRepository
-import com.vayzard.feature.enrollment.domain.model.UserInfo
+import com.vayzard.feature.enrollment.domain.model.UserInfoDefault
 
 class EnrollmentRepositoryImpl(
   private val enrollmentApiService: EnrollmentApiService
@@ -11,7 +11,7 @@ class EnrollmentRepositoryImpl(
   override suspend fun enroll(
     firstName: String,
     lastName: String
-  ): UserInfo {
+  ): UserInfoDefault {
     val request = EnrollRequest(
       firstName = firstName,
       lastName = lastName
@@ -19,7 +19,7 @@ class EnrollmentRepositoryImpl(
     val response = enrollmentApiService.enroll(
       request = request
     )
-    return UserInfo(
+    return UserInfoDefault(
       id = response.userId,
       firstName = response.firstName,
       lastName = response.lastName

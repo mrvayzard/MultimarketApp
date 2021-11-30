@@ -1,11 +1,11 @@
 package com.vayzard.feature.enrollment.mxa.domain.action
 
 import com.vayzard.feature.enrollment.domain.exception.EnrollmentException
+import com.vayzard.feature.enrollment.domain.model.EnrollmentResult
 import com.vayzard.feature.enrollment.domain.validator.FirstNameValidator
 import com.vayzard.feature.enrollment.domain.validator.LastNameValidator
 import com.vayzard.feature.enrollment.mxa.domain.EnrollmentActionMxa
 import com.vayzard.feature.enrollment.mxa.domain.EnrollmentRepositoryMxa
-import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentResultMxa
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentStateMxa
 import com.vayzard.feature.enrollment.mxa.domain.validator.MexicoSpecificFieldValidator
 import kotlinx.coroutines.flow.Flow
@@ -43,11 +43,11 @@ internal class EnrollReducerMxa(
 
     val result = if (hasValidationErrors) {
       // additional validation for initial state
-      EnrollmentResultMxa.Failure(
+      EnrollmentResult.Failure(
         error = EnrollmentException()
       )
     } else {
-      EnrollmentResultMxa.Success(
+      EnrollmentResult.Success(
         userInfo = repository.enroll(
           firstName = state.enrollmentBaseState.firstName.value,
           lastName = state.enrollmentBaseState.lastName.value,
@@ -64,12 +64,12 @@ internal class EnrollReducerMxa(
         lastName = state.enrollmentBaseState.lastName.copy(
           error = lastNameError
         ),
+        result = result
       ),
       enrollmentSpecificState = state.enrollmentSpecificState.copy(
         mexicoSpecificField = state.enrollmentSpecificState.mexicoSpecificField.copy(
           error = mexicoSpecificFieldError
         ),
-        resultMxa = result
       ),
     )
   }

@@ -1,6 +1,6 @@
 package com.vayzard.feature.enrollment.mxa.data.repository
 
-import com.vayzard.feature.enrollment.domain.model.UserInfo
+import com.vayzard.feature.enrollment.domain.model.UserInfoDefault
 import com.vayzard.feature.enrollment.mxa.data.api.EnrollmentApiServiceMxa
 import com.vayzard.feature.enrollment.mxa.data.model.EnrollRequestMxa
 import com.vayzard.feature.enrollment.mxa.domain.EnrollmentRepositoryMxa
@@ -23,7 +23,7 @@ internal class EnrollmentRepositoryImplMxa(
       request = request
     )
     return UserInfoMxa(
-      userInfo = UserInfo(
+      userInfoDefault = UserInfoDefault(
         id = response.userId,
         firstName = response.firstName,
         lastName = response.lastName
