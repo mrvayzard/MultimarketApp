@@ -9,6 +9,7 @@ rootProject.name = "MultimarketApp"
 include ':app'
 include ':feature:enrollment:base'
 include ':feature:enrollment:mxa'
+include ':feature:enrollment:jpn'
 include ':core:bloc'
 include ':feature:market'
 include ':core:utils'

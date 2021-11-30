@@ -38,4 +38,10 @@ class EnrollmentFragment : Fragment(R.layout.fragment_enrollment) {
     super.onDestroy()
     FeatureEnrollmentScope.close(getKoin())
   }
+
+  companion object {
+    fun newInstance(): EnrollmentFragment {
+      return EnrollmentFragment()
+    }
+  }
 }
