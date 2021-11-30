@@ -9,6 +9,7 @@ import com.vayzard.feature.enrollment.di.FeatureEnrollmentScope
 import com.vayzard.feature.enrollment.mxa.R
 import com.vayzard.feature.enrollment.mxa.databinding.FragmentEnrollmentMxaBinding
 import com.vayzard.feature.enrollment.mxa.ui.model.EnrollmentUiModelMxa
+import com.vayzard.feature.enrollment.ui.EnrollmentFragment
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentDelegate
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentDelegateImpl
 import com.vayzard.utils.extension.launchAndRepeatWithViewLifecycle
@@ -73,5 +74,11 @@ class EnrollmentFragmentMxa : Fragment(R.layout.fragment_enrollment_mxa) {
   override fun onDestroy() {
     super.onDestroy()
     FeatureEnrollmentScope.close(getKoin())
+  }
+
+  companion object {
+    fun newInstance(): EnrollmentFragmentMxa {
+      return EnrollmentFragmentMxa()
+    }
   }
 }
