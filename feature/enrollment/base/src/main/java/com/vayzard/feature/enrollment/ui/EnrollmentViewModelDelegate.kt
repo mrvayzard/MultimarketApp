@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 /**
- * Abstraction for fragment delegate
+ * Abstraction for fragment delegate. Todo: check if it is necessary
  */
 interface EnrollmentViewModelDelegate {
   val stateFlow: Flow<EnrollmentUiModel>

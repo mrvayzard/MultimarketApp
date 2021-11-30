@@ -24,15 +24,6 @@ internal class EnrollmentViewModelMxa(
     .map(enrollmentPresenterMxa::toUiModel)
 
   /**
-   * This method uses specific interactor for `enroll` method because MXA enrollment api has different scheme
-   */
-  override fun onEnrollButtonClicked() {
-    viewModelScope.launch {
-      enrollmentBlocMxa.enroll()
-    }
-  }
-
-  /**
    * Unique method for MXA market
    */
   fun onMexicoSpecificFieldChanged(value: String) {

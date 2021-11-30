@@ -63,6 +63,11 @@ class EnrollmentFragmentMxa : Fragment(R.layout.fragment_enrollment_mxa) {
     }
   }
 
+  override fun onDestroyView() {
+    super.onDestroyView()
+    delegate = null
+  }
+
   companion object {
     fun newInstance(): EnrollmentFragmentMxa {
       return EnrollmentFragmentMxa()

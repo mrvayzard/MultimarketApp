@@ -6,7 +6,7 @@ interface FirstNameValidator {
   fun validate(value: String): Exception?
 }
 
-class FirstNameValidatorImpl : FirstNameValidator {
+class FirstNameValidatorDefault : FirstNameValidator {
   override fun validate(value: String): Exception? = when {
     value.isBlank() || value.any(Char::isDigit) -> FirstNameException()
     else -> null

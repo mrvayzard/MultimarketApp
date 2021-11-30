@@ -8,9 +8,9 @@ import com.vayzard.feature.enrollment.domain.action.EnrollReducer
 import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameReducer
 import com.vayzard.feature.enrollment.domain.action.UpdateLastNameReducer
 import com.vayzard.feature.enrollment.domain.validator.FirstNameValidator
-import com.vayzard.feature.enrollment.domain.validator.FirstNameValidatorImpl
+import com.vayzard.feature.enrollment.domain.validator.FirstNameValidatorDefault
 import com.vayzard.feature.enrollment.domain.validator.LastNameValidator
-import com.vayzard.feature.enrollment.domain.validator.LastNameValidatorImpl
+import com.vayzard.feature.enrollment.domain.validator.LastNameValidatorDefault
 import com.vayzard.feature.enrollment.ui.EnrollmentViewModel
 import com.vayzard.feature.enrollment.ui.mapper.EnrollmentPresenter
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -57,8 +57,8 @@ val featureEnrollmentModule = module {
       repository = get()
     )
   }
-  factory { FirstNameValidatorImpl() } bind FirstNameValidator::class
-  factory { LastNameValidatorImpl() } bind LastNameValidator::class
+  factory { FirstNameValidatorDefault() } bind FirstNameValidator::class
+  factory { LastNameValidatorDefault() } bind LastNameValidator::class
   // endregion
 
   // region Data

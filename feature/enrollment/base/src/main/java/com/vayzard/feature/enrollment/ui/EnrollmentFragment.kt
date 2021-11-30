@@ -27,6 +27,11 @@ class EnrollmentFragment : Fragment(R.layout.fragment_enrollment) {
     }
   }
 
+  override fun onDestroyView() {
+    super.onDestroyView()
+    delegate = null
+  }
+
   companion object {
     fun newInstance(): EnrollmentFragment {
       return EnrollmentFragment()
