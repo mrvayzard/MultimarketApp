@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
 
-internal data class EnrollmentActionAdapter(
+internal data class EnrollmentActionAdapterMxa(
   val action: EnrollmentAction,
 ) : EnrollmentActionMxa() {
   override suspend fun reduce(

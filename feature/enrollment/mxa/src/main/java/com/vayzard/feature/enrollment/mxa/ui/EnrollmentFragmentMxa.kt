@@ -5,16 +5,13 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.vayzard.feature.enrollment.di.FeatureEnrollmentScope
 import com.vayzard.feature.enrollment.mxa.R
 import com.vayzard.feature.enrollment.mxa.databinding.FragmentEnrollmentMxaBinding
 import com.vayzard.feature.enrollment.mxa.ui.model.EnrollmentUiModelMxa
-import com.vayzard.feature.enrollment.ui.EnrollmentFragment
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentDelegate
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentDelegateImpl
 import com.vayzard.utils.extension.launchAndRepeatWithViewLifecycle
 import kotlinx.coroutines.flow.collect
-import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnrollmentFragmentMxa : Fragment(R.layout.fragment_enrollment_mxa) {
@@ -22,11 +19,6 @@ class EnrollmentFragmentMxa : Fragment(R.layout.fragment_enrollment_mxa) {
   private val binding by viewBinding(FragmentEnrollmentMxaBinding::bind)
 
   private var delegate: EnrollmentFragmentDelegate? = null
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    FeatureEnrollmentScope.getOrCreate(getKoin())
-  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -69,11 +61,6 @@ class EnrollmentFragmentMxa : Fragment(R.layout.fragment_enrollment_mxa) {
     binding.mexicoSpecificFieldEditText.doAfterTextChanged {
       viewModel.onMexicoSpecificFieldChanged(it?.toString().orEmpty())
     }
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
-    FeatureEnrollmentScope.close(getKoin())
   }
 
   companion object {

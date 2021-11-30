@@ -39,7 +39,7 @@ internal class EnrollReducerMxa(
       value = state.enrollmentSpecificState.mexicoSpecificField.value
     )
 
-    val hasValidationErrors = firstNameError != null || lastNameError != null
+    val hasValidationErrors = firstNameError != null || lastNameError != null || mexicoSpecificFieldError != null
 
     val result = if (hasValidationErrors) {
       // additional validation for initial state

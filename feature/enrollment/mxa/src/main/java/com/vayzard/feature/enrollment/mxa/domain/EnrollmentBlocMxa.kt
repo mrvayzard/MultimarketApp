@@ -38,11 +38,11 @@ internal class EnrollmentBlocMxa(
   }
 
   override fun updateFirstName(value: String) {
-    dispatch(EnrollmentActionAdapter(UpdateFirstNameAction(value, updateFirstNameReducer)))
+    dispatch(EnrollmentActionAdapterMxa(UpdateFirstNameAction(value, updateFirstNameReducer)))
   }
 
   override fun updateLastName(value: String) {
-    dispatch(EnrollmentActionAdapter(UpdateLastNameAction(value, updateLastNameReducer)))
+    dispatch(EnrollmentActionAdapterMxa(UpdateLastNameAction(value, updateLastNameReducer)))
   }
 
   fun updateMexicoSpecificField(value: String) {

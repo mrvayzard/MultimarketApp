@@ -14,36 +14,31 @@ import com.vayzard.feature.enrollment.domain.validator.LastNameValidatorImpl
 import com.vayzard.feature.enrollment.ui.EnrollmentViewModel
 import com.vayzard.feature.enrollment.ui.mapper.EnrollmentPresenter
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val featureEnrollmentModule = module {
   // region UI
   viewModel {
-    val scope = getScope(FeatureEnrollmentScope.ID)
-
     EnrollmentViewModel(
       enrollmentPresenter = get(),
-      enrollmentProcessor = scope.get<EnrollmentBloc>()
+      enrollmentProcessor = get<EnrollmentBloc>()
     )
   }
   factory { EnrollmentPresenter() }
   // endregion
 
   // region domain
-  scope(named(FeatureEnrollmentScope.ID)) {
-    scoped {
-      EnrollmentBloc(
-        updateFirstNameReducer = get(),
-        updateLastNameReducer = get(),
-        enrollReducer = get(),
-        // provided by app module
-        scope = get(),
-        // provided by app module
-        dispatcherProvider = get()
-      )
-    }
+  factory {
+    EnrollmentBloc(
+      updateFirstNameReducer = get(),
+      updateLastNameReducer = get(),
+      enrollReducer = get(),
+      // provided by app module
+      scope = get(),
+      // provided by app module
+      dispatcherProvider = get()
+    )
   }
   factory {
     UpdateFirstNameReducer(
