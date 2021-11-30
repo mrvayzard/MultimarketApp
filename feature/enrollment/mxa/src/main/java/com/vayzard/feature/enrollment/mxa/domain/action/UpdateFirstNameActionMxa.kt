@@ -1,12 +1,13 @@
 package com.vayzard.feature.enrollment.mxa.domain.action
 
 import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameReducer
+import com.vayzard.feature.enrollment.mxa.domain.EnrollmentActionMxa
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentStateMxa
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flowOf
 
-data class UpdateFirstNameActionMxa(
+internal data class UpdateFirstNameActionMxa(
   val value: String,
   val reducer: UpdateFirstNameReducer,
 ) : EnrollmentActionMxa() {

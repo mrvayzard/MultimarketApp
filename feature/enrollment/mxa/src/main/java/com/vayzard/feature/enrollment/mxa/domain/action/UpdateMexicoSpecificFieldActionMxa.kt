@@ -1,12 +1,13 @@
 package com.vayzard.feature.enrollment.mxa.domain.action
 
+import com.vayzard.feature.enrollment.mxa.domain.EnrollmentActionMxa
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentStateMxa
 import com.vayzard.feature.enrollment.mxa.domain.validator.MexicoSpecificFieldValidator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flowOf
 
-data class UpdateMexicoSpecificFieldActionMxa(
+internal data class UpdateMexicoSpecificFieldActionMxa(
   val value: String,
   val reducer: UpdateMexicoSpecificFieldReducerMxa,
 ) : EnrollmentActionMxa() {
@@ -15,7 +16,7 @@ data class UpdateMexicoSpecificFieldActionMxa(
   ): Flow<EnrollmentStateMxa> = state?.let { flowOf(reducer.reduce(this, state)) } ?: emptyFlow()
 }
 
-class UpdateMexicoSpecificFieldReducerMxa(
+internal class UpdateMexicoSpecificFieldReducerMxa(
   private val mexicoSpecificFieldValidator: MexicoSpecificFieldValidator
 ) {
   fun reduce(

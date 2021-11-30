@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class EnrollmentViewModelMxa(
+internal class EnrollmentViewModelMxa(
   private val enrollmentPresenterMxa: EnrollmentPresenterMxa,
   private val enrollmentBlocMxa: EnrollmentBlocMxa,
   enrollmentPresenter: EnrollmentPresenter,

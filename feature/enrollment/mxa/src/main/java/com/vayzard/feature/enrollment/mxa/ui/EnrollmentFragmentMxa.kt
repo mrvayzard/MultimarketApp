@@ -11,7 +11,7 @@ import com.vayzard.feature.enrollment.mxa.databinding.FragmentEnrollmentMxaBindi
 import com.vayzard.feature.enrollment.mxa.ui.model.EnrollmentUiModelMxa
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentDelegate
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentDelegateImpl
-import com.vayzard.feature.enrollment.ui.extension.launchAndRepeatWithViewLifecycle
+import com.vayzard.utils.extension.launchAndRepeatWithViewLifecycle
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -3,7 +3,7 @@ package com.vayzard.feature.enrollment.domain
 import com.vayzard.core.bloc.Bloc
 import com.vayzard.feature.enrollment.domain.action.*
 import com.vayzard.feature.enrollment.domain.model.EnrollmentState
-import com.vayzard.utils.CoroutineDispatcherProvider
+import com.vayzard.utils.coroutines.CoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 

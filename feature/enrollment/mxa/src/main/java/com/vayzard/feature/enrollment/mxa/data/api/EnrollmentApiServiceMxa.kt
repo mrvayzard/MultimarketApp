@@ -4,7 +4,7 @@ import com.vayzard.feature.enrollment.mxa.data.model.EnrollRequestMxa
 import com.vayzard.feature.enrollment.mxa.data.model.EnrollResponseMxa
 import kotlin.random.Random
 
-class EnrollmentApiServiceMxa {
+internal class EnrollmentApiServiceMxa {
   suspend fun enroll(
     request: EnrollRequestMxa
   ): EnrollResponseMxa = EnrollResponseMxa(

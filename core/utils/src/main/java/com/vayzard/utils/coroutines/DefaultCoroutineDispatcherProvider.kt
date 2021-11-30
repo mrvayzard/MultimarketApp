@@ -1,4 +1,4 @@
-package com.vayzard.utils
+package com.vayzard.utils.coroutines
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

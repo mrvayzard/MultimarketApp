@@ -8,11 +8,11 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.vayzard.feature.enrollment.ui.extension.launchAndRepeatWithViewLifecycle
-import com.vayzard.feature.enrollment.ui.extension.setErrorIfDifferent
-import com.vayzard.feature.enrollment.ui.extension.setTextIfDifferent
 import com.vayzard.feature.enrollment.ui.model.EnrollmentUiModel
 import com.vayzard.feature.enrollment.ui.model.MessageState
+import com.vayzard.utils.extension.launchAndRepeatWithViewLifecycle
+import com.vayzard.utils.extension.setErrorIfDifferent
+import com.vayzard.utils.extension.setTextIfDifferent
 import kotlinx.coroutines.flow.collect
 
 interface EnrollmentFragmentDelegate : LifecycleObserver {

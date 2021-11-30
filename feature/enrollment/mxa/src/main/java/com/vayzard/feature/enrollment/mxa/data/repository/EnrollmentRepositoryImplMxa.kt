@@ -6,7 +6,7 @@ import com.vayzard.feature.enrollment.mxa.data.model.EnrollRequestMxa
 import com.vayzard.feature.enrollment.mxa.domain.EnrollmentRepositoryMxa
 import com.vayzard.feature.enrollment.mxa.domain.model.UserInfoMxa
 
-class EnrollmentRepositoryImplMxa(
+internal class EnrollmentRepositoryImplMxa(
   private val enrollmentApiService: EnrollmentApiServiceMxa
 ) : EnrollmentRepositoryMxa {
   override suspend fun enroll(

@@ -1,4 +1,4 @@
-package com.vayzard.feature.enrollment.ui.extension
+package com.vayzard.utils.extension
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

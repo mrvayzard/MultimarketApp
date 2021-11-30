@@ -8,12 +8,12 @@ import com.vayzard.feature.enrollment.domain.model.EnrollmentState
 import com.vayzard.feature.enrollment.mxa.domain.action.*
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentSpecificState
 import com.vayzard.feature.enrollment.mxa.domain.model.EnrollmentStateMxa
-import com.vayzard.utils.CoroutineDispatcherProvider
+import com.vayzard.utils.coroutines.CoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class EnrollmentBlocMxa(
+internal class EnrollmentBlocMxa(
   private val enrollReducer: EnrollReducerMxa,
   private val updateFirstNameReducer: UpdateFirstNameReducer,
   private val updateLastNameReducer: UpdateLastNameReducer,

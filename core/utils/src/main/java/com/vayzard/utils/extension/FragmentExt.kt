@@ -1,4 +1,4 @@
-package com.vayzard.feature.enrollment.ui.extension
+package com.vayzard.utils.extension
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle

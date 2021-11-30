@@ -2,7 +2,7 @@ package com.vayzard.feature.enrollment.mxa.domain
 
 import com.vayzard.feature.enrollment.mxa.domain.model.UserInfoMxa
 
-interface EnrollmentRepositoryMxa {
+internal interface EnrollmentRepositoryMxa {
   suspend fun enroll(
     firstName: String,
     lastName: String,

@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import com.vayzard.market.domain.Market
 import com.vayzard.market.domain.MarketRepository
-import com.vayzard.utils.CoroutineDispatcherProvider
+import com.vayzard.utils.coroutines.CoroutineDispatcherProvider
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.withContext
 
