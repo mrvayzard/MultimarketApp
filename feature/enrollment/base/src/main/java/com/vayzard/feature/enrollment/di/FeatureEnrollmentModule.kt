@@ -2,8 +2,11 @@ package com.vayzard.feature.enrollment.di
 
 import com.vayzard.feature.enrollment.data.api.EnrollmentApiService
 import com.vayzard.feature.enrollment.data.repository.EnrollmentRepositoryImpl
-import com.vayzard.feature.enrollment.domain.EnrollmentInteractor
+import com.vayzard.feature.enrollment.domain.EnrollmentBloc
 import com.vayzard.feature.enrollment.domain.EnrollmentRepository
+import com.vayzard.feature.enrollment.domain.action.EnrollReducer
+import com.vayzard.feature.enrollment.domain.action.UpdateFirstNameReducer
+import com.vayzard.feature.enrollment.domain.action.UpdateLastNameReducer
 import com.vayzard.feature.enrollment.domain.validator.FirstNameValidator
 import com.vayzard.feature.enrollment.domain.validator.LastNameValidator
 import com.vayzard.feature.enrollment.ui.EnrollmentViewModel
@@ -14,32 +17,51 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val featureEnrollmentModule = module {
-  scope(named(FeatureEnrollmentScope.ID)) {
-    scoped {
-      EnrollmentInteractor(
-        enrollmentRepository = get(),
-        firstNameValidator = get(),
-        lastNameValidator = get(),
-      )
-    }
-  }
-
+  // region UI
   viewModel {
     val scope = getScope(FeatureEnrollmentScope.ID)
 
     EnrollmentViewModel(
       enrollmentPresenter = get(),
-      enrollmentInteractor = scope.get()
+      enrollmentProcessor = scope.get<EnrollmentBloc>()
     )
   }
-
   factory { EnrollmentPresenter() }
+  // endregion
 
-
+  // region domain
+  scope(named(FeatureEnrollmentScope.ID)) {
+    scoped {
+      EnrollmentBloc(
+        updateFirstNameReducer = get(),
+        updateLastNameReducer = get(),
+        enrollReducer = get(),
+        scope = get(),
+      )
+    }
+  }
+  factory {
+    UpdateFirstNameReducer(
+      firstNameValidator = get()
+    )
+  }
+  factory {
+    UpdateLastNameReducer(
+      lastNameValidator = get()
+    )
+  }
+  factory {
+    EnrollReducer(
+      firstNameValidator = get(),
+      lastNameValidator = get(),
+      repository = get()
+    )
+  }
   factory { FirstNameValidator() }
-
   factory { LastNameValidator() }
+  // endregion
 
+  // region Data
   factory {
     EnrollmentRepositoryImpl(
       enrollmentApiService = get()
@@ -47,4 +69,5 @@ val featureEnrollmentModule = module {
   } bind EnrollmentRepository::class
 
   factory { EnrollmentApiService() }
+  // endregion
 }

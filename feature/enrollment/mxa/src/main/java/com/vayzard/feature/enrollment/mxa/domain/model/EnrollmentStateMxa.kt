@@ -1,7 +1,9 @@
 package com.vayzard.feature.enrollment.mxa.domain.model
 
+import com.vayzard.feature.enrollment.domain.model.EnrollmentResult
 import com.vayzard.feature.enrollment.domain.model.EnrollmentState
 import com.vayzard.feature.enrollment.domain.model.InputState
+import com.vayzard.feature.enrollment.domain.model.UserInfo
 
 /**
  * Just wrapper.
@@ -17,4 +19,17 @@ data class EnrollmentStateMxa(
  */
 data class EnrollmentSpecificState(
   val mexicoSpecificField: InputState = InputState(),
-)
+  val resultMxa: EnrollmentResultMxa = EnrollmentResultMxa.Idle,
+  )
+
+sealed class EnrollmentResultMxa {
+  object Idle : EnrollmentResultMxa()
+
+  data class Failure(
+    val error: Exception
+  ) : EnrollmentResultMxa()
+
+  data class Success(
+    val userInfo: UserInfoMxa
+  ) : EnrollmentResultMxa()
+}
