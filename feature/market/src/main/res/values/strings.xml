@@ -1,0 +1,7 @@
+<resources>
+	<string name="app_name">market</string>
+	<string-array name="markets">
+		<item>Japan</item>
+		<item>Mexico</item>
+	</string-array>
+</resources>
