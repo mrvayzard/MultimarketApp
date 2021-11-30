@@ -1,4 +1,4 @@
-package com.vayzard.feature.enrollment.ui
+package com.vayzard.feature.enrollment.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

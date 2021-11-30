@@ -1,4 +1,4 @@
-package com.vayzard.feature.enrollment.mxa.ui
+package com.vayzard.feature.enrollment.mxa.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.vayzard.feature.enrollment.domain.model.UserInfo
@@ -6,7 +6,7 @@ import com.vayzard.feature.enrollment.mxa.domain.EnrollmentBlocMxa
 import com.vayzard.feature.enrollment.mxa.domain.model.UserInfoMxa
 import com.vayzard.feature.enrollment.mxa.ui.epoxy.EnrollmentEpoxyControllerMxa
 import com.vayzard.feature.enrollment.mxa.ui.mapper.EnrollmentPresenterMxa
-import com.vayzard.feature.enrollment.ui.EnrollmentViewModelDelegate
+import com.vayzard.feature.enrollment.ui.viewmodel.EnrollmentViewModelDelegate
 import kotlinx.coroutines.flow.map
 
 internal class EnrollmentViewModelMxa(

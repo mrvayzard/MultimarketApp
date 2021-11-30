@@ -8,6 +8,7 @@ import com.vayzard.feature.enrollment.R
 import com.vayzard.feature.enrollment.databinding.FragmentEnrollmentBinding
 import com.vayzard.feature.enrollment.ui.epoxy.EnrollmentEpoxyController
 import com.vayzard.feature.enrollment.ui.epoxy.EnrollmentEpoxyProviderImpl
+import com.vayzard.feature.enrollment.ui.viewmodel.EnrollmentViewModel
 import com.vayzard.utils.extension.launchAndRepeatWithViewLifecycle
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel

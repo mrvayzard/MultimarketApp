@@ -8,6 +8,7 @@ import com.vayzard.feature.enrollment.mxa.R
 import com.vayzard.feature.enrollment.mxa.databinding.FragmentEnrollmentMxaBinding
 import com.vayzard.feature.enrollment.mxa.ui.epoxy.EnrollmentEpoxyControllerMxa
 import com.vayzard.feature.enrollment.mxa.ui.epoxy.EnrollmentEpoxyProviderMxaImpl
+import com.vayzard.feature.enrollment.mxa.ui.viewmodel.EnrollmentViewModelMxa
 import com.vayzard.feature.enrollment.ui.MessageRenderer
 import com.vayzard.feature.enrollment.ui.epoxy.EnrollmentEpoxyProviderImpl
 import com.vayzard.utils.extension.launchAndRepeatWithViewLifecycle

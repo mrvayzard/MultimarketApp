@@ -1,4 +1,4 @@
-package com.vayzard.feature.enrollment.ui
+package com.vayzard.feature.enrollment.ui.viewmodel
 
 import com.vayzard.feature.enrollment.domain.model.EnrollmentResult
 import com.vayzard.feature.enrollment.domain.model.EnrollmentState
@@ -8,16 +8,6 @@ import com.vayzard.feature.enrollment.ui.model.MessageState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
-
-interface EnrollmentViewModelDelegate : MessageRenderer.Callback {
-  val messageStateFlow: Flow<MessageState>
-
-  suspend fun init(flow: Flow<EnrollmentState>)
-
-  fun showError(exception: Exception)
-  fun showUserInfo(userInfo: UserInfo)
-  fun showMessage(text: String)
-}
 
 open class EnrollmentViewModelDelegateDefault : EnrollmentViewModelDelegate {
   private val messageMutableStateFlow: MutableStateFlow<MessageState> = MutableStateFlow(MessageState.None)
