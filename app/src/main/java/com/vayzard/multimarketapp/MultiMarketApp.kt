@@ -1,12 +1,9 @@
 package com.vayzard.multimarketapp
 
 import android.app.Application
-import android.content.Context
 import com.vayzard.feature.enrollment.di.featureEnrollmentModule
 import com.vayzard.feature.enrollment.mxa.di.featureEnrollmentMxaModule
-import com.vayzard.market.data.MarketRepositoryImpl
-import com.vayzard.market.data.dataStore
-import com.vayzard.market.domain.MarketRepository
+import com.vayzard.market.di.featureMarketModule
 import com.vayzard.utils.CoroutineDispatcherProvider
 import com.vayzard.utils.DefaultCoroutineDispatcherProvider
 import kotlinx.coroutines.CoroutineScope
@@ -22,13 +19,8 @@ class MultiMarketApp : Application() {
       CoroutineScope(SupervisorJob() + get<CoroutineDispatcherProvider>().default())
     }
     single {
-      MarketRepositoryImpl(
-        preferences = get(),
-        dispatcher = get()
-      )
-    } bind MarketRepository::class
-    single { DefaultCoroutineDispatcherProvider } bind CoroutineDispatcherProvider::class
-    single { get<Context>().dataStore }
+      DefaultCoroutineDispatcherProvider
+    } bind CoroutineDispatcherProvider::class
   }
 
   override fun onCreate() {
@@ -39,6 +31,7 @@ class MultiMarketApp : Application() {
         appModule,
         featureEnrollmentModule,
         featureEnrollmentMxaModule,
+        featureMarketModule,
       )
     }
   }

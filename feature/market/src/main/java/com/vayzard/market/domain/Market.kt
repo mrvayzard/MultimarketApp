@@ -1,6 +1,6 @@
 package com.vayzard.market.domain
 
-enum class Market() {
+enum class Market {
   Japan,
   Mexico,
 }
