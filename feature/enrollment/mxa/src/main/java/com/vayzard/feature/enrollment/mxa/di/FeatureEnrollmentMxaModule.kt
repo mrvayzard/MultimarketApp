@@ -9,8 +9,10 @@ import com.vayzard.feature.enrollment.mxa.domain.action.UpdateMexicoSpecificFiel
 import com.vayzard.feature.enrollment.mxa.domain.validator.MexicoSpecificFieldValidator
 import com.vayzard.feature.enrollment.mxa.ui.EnrollmentFragmentProviderMxa
 import com.vayzard.feature.enrollment.mxa.ui.mapper.EnrollmentPresenterMxa
+import com.vayzard.feature.enrollment.mxa.ui.viewmodel.EnrollmentViewModelDelegateMxa
 import com.vayzard.feature.enrollment.mxa.ui.viewmodel.EnrollmentViewModelMxa
 import com.vayzard.feature.enrollment.ui.EnrollmentFragmentProvider
+import com.vayzard.feature.enrollment.ui.viewmodel.EnrollmentViewModelDelegate
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -51,6 +53,8 @@ val featureEnrollmentMxaModule = module {
       enrollmentDelegate = get()
     )
   }
+
+  factory { EnrollmentViewModelDelegateMxa() } bind EnrollmentViewModelDelegate::class
 
   factory {
     EnrollmentPresenterMxa(

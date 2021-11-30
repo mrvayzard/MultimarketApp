@@ -1,35 +1,26 @@
 package com.vayzard.feature.enrollment.mxa.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.vayzard.feature.enrollment.domain.model.UserInfo
+import androidx.lifecycle.viewModelScope
 import com.vayzard.feature.enrollment.mxa.domain.EnrollmentBlocMxa
-import com.vayzard.feature.enrollment.mxa.domain.model.UserInfoMxa
 import com.vayzard.feature.enrollment.mxa.ui.epoxy.EnrollmentEpoxyControllerMxa
 import com.vayzard.feature.enrollment.mxa.ui.mapper.EnrollmentPresenterMxa
 import com.vayzard.feature.enrollment.ui.viewmodel.EnrollmentViewModelDelegate
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 internal class EnrollmentViewModelMxa(
   private val enrollmentPresenterMxa: EnrollmentPresenterMxa,
   private val enrollmentBlocMxa: EnrollmentBlocMxa,
-  private val enrollmentDelegate: EnrollmentViewModelDelegate,
+  enrollmentDelegate: EnrollmentViewModelDelegate,
 ) : ViewModel(),
   EnrollmentEpoxyControllerMxa.Callback,
   EnrollmentViewModelDelegate by enrollmentDelegate {
   val stateFlow = enrollmentBlocMxa.asFlow().map(enrollmentPresenterMxa::toUiModel)
 
-  /**
-   * Mexico market has unique UserInfo model
-   */
-  override fun showUserInfo(userInfo: UserInfo) {
-    if (userInfo is UserInfoMxa) {
-      val message = StringBuilder()
-        .appendLine("Mexico implementation:")
-        .appendLine(userInfo.userInfoDefault.firstName)
-        .appendLine(userInfo.userInfoDefault.lastName)
-        .appendLine(userInfo.mexicoSpecificField)
-        .toString()
-      showMessage(message)
+  init {
+    viewModelScope.launch {
+      init(enrollmentBlocMxa.enrollmentFlow())
     }
   }
 

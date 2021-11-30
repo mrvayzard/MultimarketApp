@@ -30,13 +30,14 @@ abstract class EditTextEpoxyModel : ViewBindingEpoxyModelWithHolder<ItemEditText
   override fun ItemEditTextBinding.bind() {
     editText.apply {
       initTextWatcher()
-      showErrorMessage()
-      setupHint()
       setupValue()
+      setupHint()
+      showErrorMessage()
     }
   }
 
   private fun EditText.setupValue() {
+    error = errorMessage
     setTextIfDifferent(value)
   }
 
