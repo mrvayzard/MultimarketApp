@@ -3,6 +3,7 @@ package com.vayzard.multimarketapp
 import android.app.Application
 import com.vayzard.feature.enrollment.di.featureEnrollmentModule
 import com.vayzard.feature.enrollment.mxa.di.featureEnrollmentMxaModule
+import com.vayzard.jpn.di.featureEnrollmentJpnModule
 import com.vayzard.market.di.featureMarketModule
 import com.vayzard.utils.coroutines.CoroutineDispatcherProvider
 import com.vayzard.utils.coroutines.DefaultCoroutineDispatcherProvider
@@ -31,6 +32,7 @@ class MultiMarketApp : Application() {
         appModule,
         featureEnrollmentModule,
         featureEnrollmentMxaModule,
+        featureEnrollmentJpnModule,
         featureMarketModule,
       )
     }

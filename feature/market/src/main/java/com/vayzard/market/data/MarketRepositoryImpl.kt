@@ -32,16 +32,18 @@ class MarketRepositoryImpl(
 
   private fun getMarketByCode(code: Int): Market {
     return when (code) {
-      1 -> Market.Japan
-      2 -> Market.Mexico
+      1 -> Market.US
+      2 -> Market.Japan
+      3 -> Market.Mexico
       else -> Market.Japan
     }
   }
 
   private fun getMarketCode(market: Market): Int {
     return when (market) {
-      Market.Japan -> 1
-      Market.Mexico -> 2
+      Market.US -> 1
+      Market.Japan -> 2
+      Market.Mexico -> 3
     }
   }
 

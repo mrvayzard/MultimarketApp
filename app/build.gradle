@@ -37,6 +37,7 @@ android {
 dependencies {
   implementation project(path: ':feature:enrollment:base')
   implementation project(path: ':feature:enrollment:mxa')
+  implementation project(path: ':feature:enrollment:jpn')
   implementation project(path: ':feature:market')
   implementation project(path: ':core:utils')
 

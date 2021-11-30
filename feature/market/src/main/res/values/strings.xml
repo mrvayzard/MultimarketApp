@@ -1,5 +1,6 @@
 <resources>
 	<string-array name="markets">
+		<item>United States</item>
 		<item>Japan</item>
 		<item>Mexico</item>
 	</string-array>
